@@ -70,6 +70,8 @@ As implied by Cerberus, Kerberos involves 3 entities. The requesting client, the
     
     The service decrypts the service ticket using its secret key (comprise service account's _plaintext_ password, random salt, and a kvno) and validates the ticket came from the intended user. If there are no issues, the service generates its own authenticator message and sends it to the client. Thus, establishing a secure communciation channel between both parties.
 
-This ensures that mutual authentication is established between the client and target service and both entities can communicate securely.
+This ensures that mutual authentication is established between the client and target service and both entities can communicate securely. This [video from Destination Certification](https://www.youtube.com/watch?v=5N242XcKAsM) explains Kerberos very well. 
 
-Stay tuned for Kerberos Part 2!
+## Conclusion
+
+Kerberos is a network authentication protocol that ensures secure authentication between clients and servers using secret-key cryptography. It is facilitated by several entities over a ticket-based communication in the domain, intending to establish mutual authentication between clients and servers for secure communication. In part 2, we’ll dig deeper into how Kerberos works.
