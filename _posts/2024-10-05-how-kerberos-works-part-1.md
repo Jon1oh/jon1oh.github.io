@@ -38,7 +38,7 @@ Before diving into the belly of the beast, let’s understand some key terminolo
 As implied by Cerberus, Kerberos involves 3 entities. The requesting client/user, the target service server, and the KDC. Other important entities include the AS and TGS.
 
 ## How Kerberos Works
-![Kerberos Authentication Diagram](./assets/img/2024-10-05-How-Kerberos-Works-Part-1/kerberos_diagram.png)
+![Kerberos Authentication Diagram]({{ site.baseurl }}/assets/img/2024-10-05-How-Kerberos-Works-Part-1/kerberos_diagram.png)
 
 1. **KRB_AS_REQ/Request TGT (Client to AS):**
     
