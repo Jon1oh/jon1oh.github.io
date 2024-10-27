@@ -1,7 +1,6 @@
 ---
 title: How Kerberos Works (Part 2)
 date: 2024-10-19 09:41 +0800
-layout: post
 tags: [Kerberos, AD]
 categories: Research
 image: /assets/img/2024-10-19-How-Kerberos-Works-Part-2/Cerberus.jpeg
@@ -12,7 +11,7 @@ Today, I'll dive into Kerberos in detail. If you haven't read my previous post a
 
 ## How Kerberos Works
 Here's a diagram of the entire Kerberos Authentication Process in detail:
-![Kerberos Authentication Diagram]({{ site.baseurl }}/assets/img/2024-10-19-How-Kerberos-Works-Part-2/kerberos_overview.png)
+![Kerberos Authentication Diagram](/assets/img/2024-10-19-How-Kerberos-Works-Part-2/kerberos_overview.png)
 
 ### 1. KRB_AS_REQ/Request TGT (Client to AS)
 The user sends an **unencrypted message** to the AS, requesting to access a service. Here’s what it contains:
@@ -25,7 +24,7 @@ The user sends an **unencrypted message** to the AS, requesting to access a serv
 ```
 
 ### 2. KRB_AS_REP/Authentication Service Exchange (AS to Client)
-![KRB_AS_REP Diagram]({{ site.baseurl }}/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_AS_REP_Diagram.png)
+![KRB_AS_REP Diagram](/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_AS_REP_Diagram.png)
     
 **AS Side:**
 
@@ -44,12 +43,12 @@ The **client now has the TGS session key**.
 ### 3. KRB_TGS_REQ/Request Service Ticket (Client to TGS)
 
 **Client Side:**
-![KRB_TGS_REQ Diagram]({{ site.baseurl }}/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_TGS_REQ_Diagram_1.png)
+![KRB_TGS_REQ Diagram](/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_TGS_REQ_Diagram_1.png)
 
 The client generates 2 new messages. A plaintext message specifying the target service and an authenticator message storing its username and timestamp. Together with the encrypted TGT, these messages are sent to the TGS.
 
 **TGS Side:**
-![KRB_TGS_REQ Diagram]({{ site.baseurl }}/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_TGS_REQ_Diagram_2.png)
+![KRB_TGS_REQ Diagram](/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_TGS_REQ_Diagram_2.png)
 
 Upon receiving the 3 messages from the client:
 
@@ -62,7 +61,7 @@ Upon receiving the 3 messages from the client:
 The TGS now replies the client with 2 messages.
 
 ### 4. KRB_TGS_REP/Service Ticket Generation and Distribution (TGS to Client)
-![KRB_AP_REP Diagram]({{ site.baseurl }}/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_TGS_REP_Diagram.png)
+![KRB_AP_REP Diagram](/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_TGS_REP_Diagram.png)
 
 **Target Service Server Side:**
 
@@ -73,11 +72,11 @@ The TGS generates a message storing the user details and the requested service t
 The client decrypts the service server's message with the previously retrieved TGS Session key. With the underlying Service Session key, the client creates a new authenticator message and encrypts it with this Service Session key.
 
 ### 5. KRB_AP_REQ/Service Request (Client to Target Service Server)
-![KRB_AP_REQ Diagram]({{ site.baseurl }}/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_AP_REQ_Diagram.png)
+![KRB_AP_REQ Diagram](/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_AP_REQ_Diagram.png)
 The client generates a new Authenticator message and encrypts it with the received service session key. The service ticket remains encrypted as the client lacks the service’s secret key. These 2 messages are sent to the target service server.
 
 ### 6. KRB_AP_REP/Service Ticket Validation/Mutual Authentication (Service to Client)
-![KRB_AP_REP Diagram]({{ site.baseurl }}/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_AP_REP_Diagram_1.png)
+![KRB_AP_REP Diagram](/assets/img/2024-10-19-How-Kerberos-Works-Part-2/KRB_AP_REP_Diagram_1.png)
 
 **Target Server Side:**
 
