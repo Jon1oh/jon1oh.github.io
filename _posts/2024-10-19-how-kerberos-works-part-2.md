@@ -11,7 +11,7 @@ Today, I'll dive into Kerberos in detail. If you haven't read my previous post a
 
 ## How Kerberos Works
 Here's a diagram of the entire Kerberos Authentication Process in detail:
-![Kerberos Authentication Diagram](/assets/img/2024-10-19-How-Kerberos-Works-Part-2/kerberos_overview.png)
+![Kerberos Authentication Diagram](/assets/img/2024-10-19-How-Kerberos-Works-Part-2/Kerberos_Overview.png)
 
 ### 1. KRB_AS_REQ/Request TGT (Client to AS)
 The user sends an **unencrypted message** to the AS, requesting to access a service. Here’s what it contains:
