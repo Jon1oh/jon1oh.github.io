@@ -14,7 +14,7 @@ timezone: Asia/Singapore
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chidori # the main title
+title: "Jon Loh" # the main title
 
 tagline: This is my cybersecurity blog for pentesting, red teaming and security research. Enjoy reading!
 
