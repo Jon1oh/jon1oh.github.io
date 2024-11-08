@@ -2,7 +2,7 @@
 title: How Kerberos Works (Part 2)
 date: 2024-10-19 09:41 +0800
 tags: [Kerberos, AD]
-categories: Research
+categories: Cybersecurity
 image: /assets/img/2024-10-19-How-Kerberos-Works-Part-2/Cerberus.jpeg
 alt: "Kerberos"
 ---
