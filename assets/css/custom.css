@@ -1,0 +1,9 @@
+.tagCloud {
+    letter-spacing: 1px;
+    font-size: 20px;
+    user-select: none;
+}
+
+.tagCloud--item:hover {
+    color: #FFC300;
+}

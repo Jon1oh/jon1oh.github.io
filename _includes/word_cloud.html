@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+
+<body>
+    <div class="word-cloud-wrapper d-flex justify-content-center">
+        <span class="sphere fw-bold"></span>
+    </div>
+
+    <!-- Use the TagCloud script CDN in the document -->
+    <script type="text/javascript" src="../assets/js/TagCloud.min.js"></script>
+    <script>
+        const texts = [
+            'Cybersecurity', 'Active Directory', 'Web-Dev',
+            'InfoSec', 'Python', 'Interactive',
+            'Mouse', 'Rolling', 'Sphere',
+        ];
+
+        const colors = [
+            '#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#33FFA1', '#FF5733', '#33FF57',];
+
+        var tagCloud = TagCloud('.sphere', texts, {
+            // sphere radius in px
+            radius: 210,
+
+            // animation speed (slow, normal, fast)
+            maxSpeed: 'normal',
+            initSpeed: 'fast',
+
+            // Rolling direction [0 (top), 90 (left), 135 (right-bottom)]
+            direction: 135,
+
+            // interaction with mouse or not (Default True)
+            keep: false
+        });
+
+        // Assign colors to each word 
+        const wordElements = document.querySelectorAll('.sphere span'); wordElements.forEach((word, index) => {
+            word.style.color = colors[index % colors.length];
+        })
+
+        // Assign color to text in sphere
+        var color = '#FF5733';
+        document.querySelector('.sphere').style.color = color;
+    </script>
+</body>
+
+</html>

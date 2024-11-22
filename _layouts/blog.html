@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<!-- <div class="posts row-flex-grow-1">
+        {% for post in site.posts %}
+        <article class="post">
+            {% if post.cover %}
+            <img src="{{ post.cover | relative_url }}" alt="{{ post.title }}">
+            {% endif %}
+            <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+            <p>{{ post.excerpt }}</p>
+        </article>
+        {% endfor %}
+    </div> .posts -->
+
+<!-- Add your custom content here -->
+{% include post_list.html %}
