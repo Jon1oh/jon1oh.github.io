@@ -1,9 +1,33 @@
-.tagCloud {
-    letter-spacing: 1px;
-    font-size: 20px;
-    user-select: none;
+:root {
+  --grey-btn: #2c2f33;
+  --white: #ffffff;
 }
 
-.tagCloud--item:hover {
-    color: #FFC300;
+/* Custom home content styles */
+.fs-1 {
+  font-size: 3rem !important;
+}
+
+.fs-2 {
+  font-size: 2.5rem !important;
+}
+
+/* Left animation of webpage content (TBC) */
+.animate-content {
+  opacity: 0;
+  transform: translateX(-5%);
+  transition: opacity .5s ease-in-out, transform .5s ease-in-out;
+}
+
+.animate-content.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.post-preview img {
+  width: 100%;
+  max-width: auto; /* Adjust the max-width as needed */
+  height: auto;
+  max-height: 200px; /* Adjust the max-height as needed */
+  object-fit: fit;
 }

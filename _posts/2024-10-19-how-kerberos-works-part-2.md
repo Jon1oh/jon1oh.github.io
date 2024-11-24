@@ -1,10 +1,9 @@
 ---
+layout: post
 title: How Kerberos Works (Part 2)
 date: 2024-10-19 09:41 +0800
 tags: [Kerberos, AD]
 categories: Cybersecurity
-image: /assets/img/2024-10-19-How-Kerberos-Works-Part-2/Cerberus.jpeg
-alt: "Kerberos"
 ---
 
 Today, I'll dive into Kerberos in detail. If you haven't read my previous post about how Kerberos works on a high level, check it out [here]({% post_url 2024-10-05-how-kerberos-works-part-1 %}).

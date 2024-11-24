@@ -16,7 +16,7 @@ timezone: Asia/Singapore
 
 title: "Jon Loh" # the main title
 
-tagline: Aspiring Pentester | Security/Tech Enthusiast
+tagline: Welcome to my website!
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -46,7 +46,7 @@ navigation:
   url: /projects/
 - title: "Blog"
   icon: pen
-  url: "/blog"
+  url: /blog/
 - title: "Contact"
   icon: envelope
   url: /contact/

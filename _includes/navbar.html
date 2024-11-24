@@ -1,18 +1,11 @@
 <nav class="flex-column flex-grow-1 w-100 ps-0">
     <ul class="nav">
         {% for item in site.navigation %}
-        <li class="nav-item {% if item.children %}dropdown{% endif %}">
-            <a href="{{ item.url }}" class="nav-link {% if item.children %}dropdown-toggle{% endif %}" {% if item.children %}id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"{% endif %}>
+        <li class="nav-item">
+            <a href="{{ item.url }}" class="nav-link {% if page.url == item.url %}active text-dark shadow {% else %}text-muted{% endif %}">
                 <i class="fa-fw fas fa-{{ item.icon }}"></i>
                 <span>{{ item.title | upcase }}</span>
             </a>
-            {% if item.children %}
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% for child in item.children %}
-                <li><a class="dropdown-item" href="{{ child.url }}"><i class="fa-fw fas fa-{{ child.icon }}"></i>{{ child.title | upcase }}</a></li>
-                {% endfor %}
-            </ul>
-            {% endif %}
         </li>
         {% endfor %}
     </ul>

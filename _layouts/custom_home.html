@@ -1,5 +1,38 @@
 ---
 layout: default
 ---
-<h1>Welcome to My Site</h1>
-<p>This is the custom home page.</p>
+
+<link rel="stylesheet" href="../assets/css/custom.css">
+
+<header class="welcome-text">
+    <h1 class="fw-bold mb-1 fs-1">Hey, I'm Jon.</h1>
+    <h1 class="fw-bold mt-0 fs-2">I'm a <span class="auto-type text-muted"></span></h1>
+    <div class="description py-2">
+        <p class="description-text">This is a description</p>
+        <div class="desc-btns">
+            <a type="button" class="btn btn-light me-4" href="/contact/">Contact</a>
+            <button type="button" class="btn btn-light" id="copy-email-btn" onclick="copyEmail()"><i class="far fa-copy me-2"></i>Email</button>
+        </div> <!-- .desc-btns -->
+    </div> <!--.description-text -->
+</header><!-- .welcome-text -->
+
+<!-- TypedJS library CDN for typewriter effect -->
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+    var typed = new Typed(".auto-type", {
+        strings: ["Aspiring Pentester &#128269;", "Cyber Enthusiast &#128187;", "Chorister &#127925;", "Fingerstyle Guitarist &#127928;", "Swimmer &#127946;"],
+        typeSpeed: 100, // In milliseconds
+        backSpeed: 50,
+        loop: true,
+    });
+
+    function copyEmail() { 
+        const email = "jon.loh@hotmail.com"; 
+        navigator.clipboard.writeText(email).then(() => { 
+            const copyButton = document.getElementById("copy-email-btn"); 
+            copyButton.innerHTML = 'Copied!'; 
+            setTimeout(() => { 
+                copyButton.innerHTML = '<i class="fas fa-copy"></i> Email'; 
+                }, 500); }).catch(err => { console.error("Failed to copy email: ", err); }) }
+</script>
