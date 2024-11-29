@@ -1,0 +1,26 @@
+---
+layout: page
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+
+<div class="contact-wrapper">
+    <h2 class="fw-bold">Leave a Message</h2>
+    <form class="col-md-8 col-sm-12 col-xs-12" id="contact-form">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <input type="name" class="form-control" id="name" required placeholder="Name">
+            </div>
+            <div class="col-md-6">
+                <input type="email" class="form-control" id="Email" required placeholder="Email">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <textarea class="form-control" id="message" required placeholder="Your Message..." rows="5"></textarea>
+            </div>
+        </div>
+        <button type="submit" id="submit" action="mailto:jon.loh@hotmail.com" class="btn border fw-bold">Submit</button>
+    </form>
+</div> <!-- .contact-wrapper -->
