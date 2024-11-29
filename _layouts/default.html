@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
     {% include head.html %}
 </head>
@@ -58,12 +57,15 @@
                             {% if page.url == "/" %}
                             Home
                             {% else %}
-                            <span><a href="/">Home</a></span><span>{{ page.title }}</span>
+                            <span><a href="/">Home</a></span>
+                            {% if page.url contains "/posts/" %}
+                            <span><a href="/blog/">Blog</a></span>
+                            {% endif %}
+                            <span>{{ page.title }}</span>
                             {% endif %}
                         </span>
                     </nav>
                     <!-- endof #breadcrumb -->
-
 
                     <button type="button" id="sidebar-trigger" class="btn btn-link">
                         <i class="fas fa-bars fa-fw"></i>

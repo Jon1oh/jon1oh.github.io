@@ -1,8 +1,10 @@
+<link rel="stylesheet" href="../assets/css/custom.css">
+
 <nav class="flex-column flex-grow-1 w-100 ps-0">
     <ul class="nav">
         {% for item in site.navigation %}
         <li class="nav-item">
-            <a href="{{ item.url }}" class="nav-link {% if page.url == item.url %}active text-dark shadow {% else %}text-muted{% endif %}">
+            <a href="{{ item.url }}" class="nav-link {% if page.url == item.url %}active shadow {% else %}text-muted{% endif %}">
                 <i class="fa-fw fas fa-{{ item.icon }}"></i>
                 <span>{{ item.title | upcase }}</span>
             </a>
