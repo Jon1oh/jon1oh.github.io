@@ -1,0 +1,67 @@
+{% assign all_projects = site.projects | sort: 'date' | reverse %}
+{% assign latest_projects = all_projects | limit: 3 %}
+
+<div id="project-list" class="flex-grow-1 px-xl-1">
+    {% for project in latest_projects %}
+    <article class="card-wrapper card">
+        <a href="{{ project.url | relative_url }}" class="project-preview row g-0 flex-md-row-reverse">
+            {% assign card_body_col = '12' %}
+            {% if project.image %}
+            {% assign src = project.image.path | default: project.image %}
+            {% unless src contains '//' %}
+            {% assign src = project.media_subpath | append: '/' | append: src | replace: '//', '/' %}
+            {% endunless %}
+
+            {% assign alt = project.image.alt | xml_escape | default: 'Project Image' %}
+            {% assign lqip = null %}
+
+            {% if project.image.lqip %}
+            {% capture lqip %}lqip="{{ project.image.lqip }}"{% endcapture %}
+            {% endif %}
+            <div class="col-md-5">
+                <img src="{{ src }}" alt="{{ alt }}" class="rounded-end" {{ lqip }}>
+            </div>
+            {% assign card_body_col = '7' %}
+            {% endif %}
+
+            <div class="col-md-{{ card_body_col }}">
+                <div class="card-body d-flex flex-column">
+                    <h1 class="card-title my-2 mt-md-0">{{ project.title }}</h1>
+                    <div class="card-text content mt-0 mb-3">
+                        <p>{{ project.description }}</p>
+                    </div>
+
+                    <div class="project-meta flex-grow-1 d-flex align-items-end">
+                        <div class="me-auto">
+                            <!-- project date -->
+                            <i class="far fa-calendar fa-fw me-1"></i>
+                            {% include datetime.html date=project.date lang=lang %}
+
+                            <!-- categories -->
+                            {% if project.categories.size > 0 %}
+                            <i class="far fa-folder-open fa-fw me-1"></i>
+                            <span class="categories">
+                                {% for category in project.categories %}
+                                {{ category }}
+                                {%- unless forloop.last -%},{%- endunless -%}
+                                {% endfor %}
+                            </span>
+                            {% endif %}
+                        </div>
+
+                        {% if project.pin %}
+                        <div class="pin ms-1">
+                            <i class="fas fa-thumbtack fa-fw"></i>
+                            <span>{{ site.data.locales[lang].post.pin_prompt }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <!-- .project-meta -->
+                </div>
+                <!-- .card-body -->
+            </div>
+        </a>
+    </article>
+    {% endfor %}
+</div>
+<!-- #project-list -->

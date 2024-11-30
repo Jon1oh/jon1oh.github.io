@@ -16,10 +16,10 @@ layout: default
     </div> <!--.description-text -->
 </header><!-- .welcome-text -->
 
-<main class="border border-primary">
+<main>
     <h2 class="fw-bold">Projects</h2>
     <div class="projects-overview-wrapper">
-
+        {% include latest-projects.html %}
     </div>
 </main>
 
@@ -35,12 +35,14 @@ layout: default
         loop: true,
     });
 
-    function copyEmail() { 
-        const email = "jon.loh@hotmail.com"; 
-        navigator.clipboard.writeText(email).then(() => { 
-            const copyButton = document.getElementById("copy-email-btn"); 
-            copyButton.innerHTML = 'Copied!'; 
-            setTimeout(() => { 
-                copyButton.innerHTML = '<i class="fas fa-copy"></i> Email'; 
-                }, 500); }).catch(err => { console.error("Failed to copy email: ", err); }) }
+    function copyEmail() {
+        const email = "jon.loh@hotmail.com";
+        navigator.clipboard.writeText(email).then(() => {
+            const copyButton = document.getElementById("copy-email-btn");
+            copyButton.innerHTML = 'Copied!';
+            setTimeout(() => {
+                copyButton.innerHTML = '<i class="fas fa-copy"></i> Email';
+            }, 500);
+        }).catch(err => { console.error("Failed to copy email: ", err); })
+    }
 </script>

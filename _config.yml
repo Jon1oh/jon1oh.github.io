@@ -187,6 +187,8 @@ collections:
   tabs:
     output: true
     sort_by: order
+  projects:
+    output: true
 
 defaults:
   - scope:
@@ -199,6 +201,12 @@ defaults:
       # DO NOT modify the following parameter unless you are confident enough
       # to update the code of all other post links in this project.
       permalink: /blog/posts/:title/
+  - scope:
+      path: "_projects"
+      types: projects
+    values:
+      layout: project
+      permalink: /projects/:title/
   - scope:
       path: _drafts
     values:
