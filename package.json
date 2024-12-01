@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "build": "^0.1.4",
+    "npm": "^10.9.1",
+    "run": "^1.5.0",
     "TagCloud": "^2.5.0"
   }
 }
