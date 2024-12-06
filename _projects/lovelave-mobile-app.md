@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: "Lovelace Mobile Application"
 description: "A secure mobile dating application built with Flask, Flutter and MongoDB for my Polytechnic Y2 Information Security Project."
 date: 2024-11-02

@@ -6,6 +6,26 @@
   --hover-color: #343a40;
   --light-form-field-color: #f8f9fa;
   --card-hover-bg: #e2e2e2;
+  --project-card-border: linear-gradient(to right, #333399, #ff00cc);
+}
+
+/* Custom animation styles */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(.99);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+#main-content main {
+  animation: fadeUp .7s ease-in-out;
+  animation-fill-mode: both;
+  opacity: 0;
 }
 
 /* Custom home content styles */
@@ -15,18 +35,6 @@
 
 .fs-2 {
   font-size: 2.5rem !important;
-}
-
-/* Left animation of webpage content (TBC) */
-.animate-content {
-  opacity: 0;
-  transform: translateX(-5%);
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.animate-content.visible {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 .project-preview img {

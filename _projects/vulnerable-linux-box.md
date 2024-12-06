@@ -1,9 +1,9 @@
 ---
-layout: page
+layout: project
 title: "Vulnerable Linux Box"
 description: "An intentionally vulnerable environment to learn Linux pentesting."
 date: 2024-11-03
-categories: [Category1, Category2]
+categories: [Linux, Pentesting]
 ---
 
 ## Background
