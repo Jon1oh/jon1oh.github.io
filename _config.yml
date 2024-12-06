@@ -203,7 +203,7 @@ defaults:
       permalink: /blog/posts/:title/
   - scope:
       path: "_projects"
-      types: projects
+      type: project
     values:
       layout: project
       permalink: /projects/:title/
