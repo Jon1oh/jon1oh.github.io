@@ -189,6 +189,7 @@ collections:
     sort_by: order
   projects:
     output: true
+    type: project
 
 defaults:
   - scope:
@@ -203,7 +204,7 @@ defaults:
       permalink: /blog/posts/:title/
   - scope:
       path: "_projects"
-      types: projects
+      type: projects
     values:
       layout: project
       permalink: /projects/:title/
