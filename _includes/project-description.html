@@ -2,7 +2,11 @@
   Get project description or generate it from the project content.
 {%- endcomment -%}
 
-{%- assign max_length = include.max_length | default: 100 -%}
+{%- if page.url == "/" -%}
+  {%- assign max_length = include.max_length | default: 60 -%}
+{%- else -%}
+  {%- assign max_length = include.max_length | default: 100 -%}
+{%- endif -%}
 
 {%- capture description -%}
 {%- if project.description -%}

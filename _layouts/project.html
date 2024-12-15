@@ -12,17 +12,27 @@ layout: page
         {% endif %}
 
         <div class="post-meta text-muted">
-            <!-- published date -->
-            <span>
-                {{ site.data.locales[lang].project.posted }}
-                {% include datetime.html date=page.date tooltip=true lang=lang %}
+            <!-- start date -->
+            {% if page.start_date and page.end_date %}
+            <span class="fw-bold">
+                {{ page.start_date | date: "%b %Y" }} to {{ page.end_date | date: "%b %Y" }}
             </span>
+            {% assign start_date = page.start_date | date: "%s" %}
+            {% assign end_date = page.end_date | date: "%s" %}
+            {% assign duration_seconds = end_date | minus: start_date %}
+            {% assign duration_months = duration_seconds | divided_by: 60 | divided_by: 60 | divided_by: 24 | divided_by: 30 %}
+            {% assign duration_years = duration_months | divided_by: 12 %}
+            {% assign remaining_months = duration_months | modulo: 12 %}
 
-            <!-- lastmod date -->
-            {% if page.last_modified_at and page.last_modified_at != page.date %}
-            <span>
-                {{ site.data.locales[lang].project.updated }}
-                {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}
+            <span class="fw-bold">
+                {% if duration_years > 0 %} 
+                    {{ duration_years }} year{% if duration_years > 1 %}s{% endif %}
+                {% endif %} 
+                
+                {% if remaining_months > 0 %} 
+                    {% if duration_years > 0 %} and {% endif %} 
+                    {{ remaining_months }} month{% if remaining_months > 1 %}s{% endif %} 
+                {% endif %} 
             </span>
             {% endif %}
 

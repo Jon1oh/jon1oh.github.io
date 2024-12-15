@@ -1,8 +1,10 @@
 ---
 layout: project
-title: "Lovelace Mobile Application"
+title: "Lovelace Mobile App"
 description: "A secure mobile dating application built with Flask, Flutter and MongoDB for my Polytechnic Y2 Information Security Project."
 date: 2024-11-02
+start_date: 2023-09-01
+end_date: 2024-02-01
 categories: [InfoSec, Mobile-Dev]
 ---
 
@@ -16,8 +18,12 @@ The primary objective of the project was to produce functions and features relat
 
 ## Challenges and Solutions
 1. **Learning a new programming language**
-2. **Integration of client and server side functionalities**
+<br>
 
+
+2. **Integration of client and server side functionalities**
+<br>
+As it was my first time developing a mobile app, 
 
 ## Deliverables/Outcome
 Together with my team, we successfully delievered 2 presentations and the completed and secured mobile application. The first presentation was a proposal and overview of our intended project approach, covering our intended security aspects and the platform used to showcase them. The second and final presentation showcased our finished secure mobile application features and how they relate to ensuring data security.

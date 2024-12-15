@@ -22,10 +22,10 @@ layout: default
         <h2 class="fw-bold mb-1">Recent Projects</h2>
         <p>Here's some projects I've worked on</p>
 
-        <div id="project-list" class="d-flex flex-column flex-lg-row gap-1 gap-lg-4 px-xl-1">
+        <div id="project-list" class="d-flex flex-column flex-xl-row gap-1 gap-xl-4 px-xl-1">
             {% assign sorted_projects = site.projects | sort: "date" | reverse %}
             {% for project in sorted_projects limit:3 %}
-            <article class="card-wrapper card flex-fill h-100 col-12 col-lg-4 overflow-hidden">
+            <article class="card-wrapper card flex-fill h-100 col-12 col-4 overflow-hidden">
                 <a href="{{ project.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
                     {% assign card_body_col = '12' %}
                     {% if project.image %}
@@ -122,7 +122,7 @@ layout: default
                     <div class="col-md-{{ card_body_col }}">
                         <div class="card-body d-flex flex-column">
                             <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
-                            <div class="card-text content mt-0 mb-3">
+                            <div class="card-text content mt-0 mb-3 overflow-hidden">
                                 <p>{% include post-description.html %}</p>
                               </div>
 
