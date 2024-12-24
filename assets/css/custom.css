@@ -1,6 +1,5 @@
 :root {
   --grey-btn: #36393e; /* Discord dark mode hex color */
-  --blurple: #5865f2;
   --grey-text: #adb5bd;
   --white: #ffffff;
   --hover-color: #343a40;
@@ -113,8 +112,7 @@ html[data-mode='dark'] #contact-form button {
 }
 
 html[data-mode='dark'] #contact-form button {
-  background-color: var(--blurple) !important;
-  color: var(--white);
+  background-color: var(--white) !important;
 }
 
 /* PROJECTS PAGE STYLES */
@@ -154,9 +152,11 @@ html[data-mode='dark'] #contact-form button {
 
 .project-preview {
   border-radius: .625rem;
-  background: #1e1e1e;
 }
 
+html[data-mode='dark'] .project-preview {
+  background: #1e1e1e;
+}
 
 .project-preview::before {
   content: '';

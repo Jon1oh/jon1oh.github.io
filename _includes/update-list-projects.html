@@ -1,11 +1,13 @@
-<!-- Get 5 last posted/updated posts -->
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+
+<!-- Get 5 last posted/updated projects -->
 
 {% assign MAX_SIZE = 5 %}
 
 {% assign all_list = '' | split: '' %}
 
-{% for post in site.posts %}
-{% assign datetime = post.last_modified_at | default: post.date %}
+{% for project in site.projects %}
+{% assign datetime = project.last_modified_at | default: project.date %}
 
 {% capture elem %}
 {{- datetime | date: "%Y%m%d%H%M%S" -}}::{{- forloop.index0 -}}
@@ -23,18 +25,18 @@
 {% endfor %}
 
 {% if update_list.size > 0 %}
-<section id="access-lastmod">
-    <h2 class="panel-heading">Recently Updated Posts</h2>
+<section id="access-lastmod-projects">
+    <h2 class="panel-heading">Recently Updated Projects</h2>
     <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
         {% for item in update_list %}
         {% assign index = item | split: '::' | last | plus: 0 %}
-        {% assign post = site.posts[index] %}
-        {% assign url = post.url | relative_url %}
+        {% assign project = site.projects[index] %}
+        {% assign url = project.url | relative_url %}
         <li class="text-truncate lh-lg">
-            <a href="{{ url }}">{{ post.title }}</a>
+            <a class="text-muted text-decoration-none" href="{{ url }}">{{ project.title }}</a>
         </li>
         {% endfor %}
     </ul>
 </section>
-<!-- #access-lastmod -->
+<!-- #access-lastmod-projects -->
 {% endif %}

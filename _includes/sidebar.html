@@ -1,0 +1,41 @@
+<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end m-0 p-0">
+    <header class="profile-wrapper">
+        <a href="/" id="avatar" class="rounded-circle"><img src="/./assets/img/jon.jpeg" width="112" height="112"
+                alt="avatar" onerror="this.style.display='none'"></a>
+
+        <h1 class="site-title">
+            <a href="/">{{ site.title }}</a>
+        </h1>
+        <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
+    </header>
+    <!-- .profile-wrapper -->
+
+    {% include navbar.html %}
+
+    <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
+        <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
+            <i class="fas fa-adjust"></i>
+        </button>
+
+        <span class="icon-border"></span>
+
+        <a href="https://github.com/jon1oh" aria-label="github" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+        </a>
+
+        <a href="javascript:location.href = 'mailto:' + ['jon.loh','hotmail.com'].join('@')" aria-label="email"
+            target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-envelope"></i>
+        </a>
+
+        <a href="https://linkedin.com/in/jon-loh" aria-label="linkedin" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a href="https://discord.com/" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-discord"></i>
+        </a>
+    </div>
+    <!-- .sidebar-bottom -->
+</aside>
+<!-- #sidebar -->

@@ -35,15 +35,15 @@
 
 {% if trending_tags.size > 0 %}
 <section>
-    <h2 class="panel-heading">Trending Post Tags</h2>
+    <h2 class="panel-heading">Trending Project Tags</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
         {% for tag_name in trending_tags %}
-        {% assign url = tag_name | slugify | url_encode | prepend: '/tags/' | append: '/' %}
+        {% assign url = tag_name | slugify | url_encode | prepend: '/projects/project_tags/' | append: '/' %}
         <a class="post-tag btn btn-outline-primary" href="{{ url | relative_url }}">{{ tag_name }}</a>
         {% endfor %}
     </div>
     <div>
-        <a class="text-muted lh-lg" href="/tags/">View More</a>
+        <a class="text-muted lh-lg" href="{{ site.baseurl }}/projects/project_tags/">View More</a>
     </div>
 </section>
 {% endif %}

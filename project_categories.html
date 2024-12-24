@@ -1,0 +1,19 @@
+---
+layout: page
+title: Project Categories
+permalink: /projects/project_categories
+---
+
+{% include lang.html %}
+
+{% assign sort_categories = site.projects | group_by: 'category' | sort: 'name' %}
+
+<ul>
+    {% for category in sort_categories %}
+    <li>
+        {% assign category_name = category.name %}
+        {% capture _category_url %}/projects/{{ category_name | slugify | url_encode }}/{% endcapture %}
+        <a href="{{ _category_url | relative_url }}">{{ category_name }}</a>
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,48 @@
+{% assign MAX = 10 %}
+
+{% assign size_list = '' | split: '' %}
+{% assign category_list = '' | split: '' %}
+
+{% for project in site.projects %}
+  {% for category in project.categories %}
+    {% assign size = site.projects | where: "categories", category | size %}
+    {% assign size_list = size_list | push: size %}
+
+    {% assign category_str = category | append: '::' | append: size %}
+    {% assign category_list = category_list | push: category_str %}
+  {% endfor %}
+{% endfor %}
+
+{% assign size_list = size_list | uniq | sort | reverse %}
+{% assign category_list = category_list | uniq | sort_natural %}
+
+{% assign trending_categories = '' | split: '' %}
+
+{% for size in size_list limit: MAX %}
+  {% for category_str in category_list %}
+    {% assign category = category_str | split: '::' %}
+    {% assign category_name = category | first %}
+    {% assign category_size = category | last | plus: 0 %}
+    {% if category_size == size %}
+      {% unless trending_categories contains category_name %}
+        {% assign trending_categories = trending_categories | push: category_name %}
+        {% break %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% if trending_categories.size > 0 %}
+<section>
+    <h2 class="panel-heading">Trending Project Categories</h2>
+    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+        {% for category_name in trending_categories %}
+        {% assign url = category_name | slugify | url_encode | prepend: '/projects/project_categories/' | append: '/' %}
+        <a class="post-tag btn btn-outline-primary" href="{{ url | relative_url }}">{{ category_name }}</a>
+        {% endfor %}
+    </div>
+    <div>
+        <a class="text-muted lh-lg" href="{{ site.baseurl }}/projects/project_categories/">View More</a>
+    </div>
+</section>
+{% endif %}

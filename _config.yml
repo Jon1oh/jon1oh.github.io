@@ -187,6 +187,8 @@ collections:
   tabs:
     output: true
     sort_by: order
+  posts:
+    output: true
   projects:
     output: true
     type: project
@@ -243,10 +245,14 @@ exclude:
   - package*.json
 
 jekyll-archives:
-  enabled: [categories, tags]
+  enabled: [categories, tags, project_categories, project_tags]
   layouts:
     category: category
     tag: tag
+    project_category: project_category
+    project_tag: project_tag
   permalinks:
     tag: tags/:name/
     category: categories/:name/
+    project_tag: /projects/project_tags/:name/
+    project_category: /projects/project_categories/:name/

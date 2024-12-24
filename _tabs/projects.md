@@ -1,6 +1,6 @@
 ---
 # the default layout is 'page'
-subtitle: "Here are my projects."
+subtitle: "Here's a selection of my projects."
 title: Projects
 icon: fas fa-laptop
 order: 2

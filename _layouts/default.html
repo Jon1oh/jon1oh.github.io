@@ -5,47 +5,7 @@
 
 <body data-new-gr-c-s-check-loaded="14.1090.0" data-gr-ext-installed="">
     <!-- The Side Bar -->
-    <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
-        <header class="profile-wrapper">
-            <a href="/" id="avatar" class="rounded-circle"><img src="/./assets/img/jon.jpeg" width="112" height="112"
-                    alt="avatar" onerror="this.style.display='none'"></a>
-
-            <h1 class="site-title">
-                <a href="/">{{ site.title }}</a>
-            </h1>
-            <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
-        </header>
-        <!-- .profile-wrapper -->
-
-        {% include navbar.html %}
-
-        <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
-            <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle">
-                <i class="fas fa-adjust"></i>
-            </button>
-
-            <span class="icon-border"></span>
-
-            <a href="https://github.com/jon1oh" aria-label="github" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i>
-            </a>
-
-            <a href="javascript:location.href = 'mailto:' + ['jon.loh','hotmail.com'].join('@')" aria-label="email"
-                target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-envelope"></i>
-            </a>
-
-            <a href="https://linkedin.com/in/jon-loh" aria-label="linkedin" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-linkedin"></i>
-            </a>
-
-            <a href="https://discord.com/" aria-label="Discord" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-discord"></i>
-            </a>
-        </div>
-        <!-- .sidebar-bottom -->
-    </aside>
-    <!-- #sidebar -->
+    {% include sidebar.html %}
 
     <div id="main-wrapper" class="d-flex justify-content-center">
         <div class="col-12 col-md-8 container d-flex flex-column px-xxl-5">
@@ -94,7 +54,7 @@
             </header>
 
             <div class="row flex-grow-1">
-                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url == "/blog/" or page.url contains "/posts/" %}col-lg-11 col-xl-9{% else %}col-lg-12{% endif %} px-md-4">
+                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url == "/blog/" or page.url contains "/posts/" or page.url contains "/projects/" or page.url contains "/tags/" or page.url contains "/categories/" %}col-lg-11 col-xl-9{% else %}col-lg-12{% endif %} px-md-4">
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <!-- Create your custom home page content here -->
@@ -102,14 +62,23 @@
                     {{ content }}
                 </main>
 
-                {% if page.url == "/blog/" or page.url contains "/posts/" %}
+                {% if page.url contains "/blog/" or page.url contains "/posts/" or page.url contains "/tags/" or page.url contains "/categories/" %}
                 <!-- panel -->
                 <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
                     <div class="access">
                         {% include_cached update-list.html lang=lang %}
-                        {% include_cached trending-tags.html lang=lang %}
+                        {% include_cached trending-categories.html lang=lang %}                        
+                        {% include_cached trending-tags.html lang=lang %}            
                     </div> <!-- .access -->
-                </aside> <!-- #panel-wrapper -->
+                </aside> <!-- #panel-wrapper -->  
+                {% elsif page.url contains "/projects/" %}
+                <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
+                    <div class="access">
+                        {% include_cached update-list-projects.html lang=lang %}
+                        {% include_cached trending-project-categories.html lang=lang %}                        
+                        {% include_cached trending-project-tags.html lang=lang %}            
+                    </div> <!-- .access -->
+                </aside> <!-- #panel-wrapper -->  
                 {% endif %}
             </div> <!-- .row -->
 

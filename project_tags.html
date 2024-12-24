@@ -1,0 +1,63 @@
+---
+layout: page
+title: Project Tags
+permalink: /projects/project_tags/
+---
+
+{% include lang.html %}
+
+{% assign HEAD_PREFIX = 'h_' %}
+{% assign LIST_PREFIX = 'l_' %}
+
+{% assign group_index = 0 %}
+
+{% assign sort_tags = site.projects | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+
+{% for tag in sort_tags %}
+{% assign tag_name = tag %}
+{% assign projects_of_tag = site.projects | where: "tags", tag_name %}
+{% assign first_project = projects_of_tag | first %}
+
+{% if tag_name == first_project.tags[0] %}
+{% assign sub_tags = '' | split: '' %}
+
+{% for project in projects_of_tag %}
+{% assign second_tag = project.tags[1] %}
+{% if second_tag %}
+{% unless sub_tags contains second_tag %}
+{% assign sub_tags = sub_tags | push: second_tag %}
+{% endunless %}
+{% endif %}
+{% endfor %}
+
+{% assign sub_tags = sub_tags | sort %}
+{% assign sub_tags_size = sub_tags | size %}
+<!-- ...existing code... -->
+{% endif %}
+{% endfor %}
+
+<div id="tags" class="d-flex flex-wrap mx-xl-2">
+    {% assign tags = '' | split: '' %}
+    {% for project in site.projects %}
+    {% for tag in project.tags %}
+    {% unless tags contains tag %}
+    {% assign tags = tags | push: tag %}
+    {% endunless %}
+    {% endfor %}
+    {% endfor %}
+
+    {% assign sorted_tags = tags | sort_natural %}
+
+    {% if sorted_tags.size == 0 %}
+    <p>Sorry, no project tags available.</p>
+    {% else %}
+    {% for t in sorted_tags %}
+    <div>
+        <a class="tag" href="{{ t | slugify | url_encode | prepend: '/projects/tags/' | append: '/' | relative_url }}">
+            {{ t -}}
+            <span class="text-muted">{{ site.projects | where: "tags", t | size }}</span>
+        </a>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
