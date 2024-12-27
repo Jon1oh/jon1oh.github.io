@@ -33,17 +33,21 @@
 {% endfor %}
 {% endfor %}
 
-{% if trending_categories.size > 0 %}
 <section>
     <h2 class="panel-heading">Trending Post Categories</h2>
+    {% if trending_categories.size > 0 %}
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
         {% for category_name in trending_categories %}
-        {% assign url = category_name | slugify | url_encode | prepend: '/categories/' | append: '/' %}
+        {% assign url = category_name | slugify | url_encode | prepend: '/blog/categories/' | append: '/' %}
         <a class="post-tag btn btn-outline-primary" href="{{ url | relative_url }}">{{ category_name }}</a>
         {% endfor %}
     </div>
     <div>
-        <a class="text-muted" href="/categories/">View More</a>
+        <a class="text-muted lh-lg" href="/blog/categories/">View More</a>
     </div>
-</section>
-{% endif %}
+    {% else %}
+    <div class="mt-3 mb-1 me-3">
+        <p>No trending post categories currently available.</p>
+    </div>
+    {% endif %}
+  </section>

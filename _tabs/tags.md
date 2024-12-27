@@ -1,5 +1,7 @@
 ---
 layout: tags
+title: Post Tags
 icon: fas fa-tags
-order: 2
+permalink: /blog/tags/ 
+order: 0
 ---

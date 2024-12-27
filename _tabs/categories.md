@@ -1,5 +1,7 @@
 ---
 layout: categories
+title: Post Categories
 icon: fas fa-stream
-order: 1
+permalink: /blog/categories/
+order: 0
 ---

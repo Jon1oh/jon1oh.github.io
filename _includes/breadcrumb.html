@@ -1,0 +1,28 @@
+<nav id="breadcrumb" aria-label="Breadcrumb">
+    <!-- index page -->
+    <span>
+        {% if page.url == "/" %}
+        Home
+        {% else %}
+        <span><a href="/">Home</a></span>
+
+        {% assign blog_path = page.url | split: "/blog/" %}
+        {% if blog_path.size > 1 and blog_path[1] != "" %}
+        <span><a href="/blog/">Blog</a></span>
+        {% endif %}
+
+        {% assign project_path = page.url | split: "/projects/" %}
+        {% if project_path.size > 1 and project_path[1] != "" %}
+        <span><a href="/projects/">Projects</a></span>
+        {% endif %}
+
+        {% assign category_path = page.url | split: "/blog/categories/" %}
+        {% if category_path.size > 1 and category_path[1] != "" %}
+        <span><a href="/blog/categories/">Post Categories</a></span>
+        <span>{{ page.title }}</span>
+        {% else %}
+        <span>{{ page.title }}</span>
+        {% endif %}
+        {% endif %}
+    </span>
+</nav>

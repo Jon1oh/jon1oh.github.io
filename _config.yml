@@ -220,6 +220,16 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  - scope:
+      path: ""
+      type: categories
+    values:
+      permalink: /blog/categories/:name/
+  - scope:
+      path: ""
+      type: tags
+    values:
+      permalink: /blog/tags/:name/
 
 sass:
   style: compressed
@@ -249,10 +259,10 @@ jekyll-archives:
   layouts:
     category: category
     tag: tag
-    project_category: project_category
-    project_tag: project_tag
+    project_category: project-category
+    project_tag: project-tag
   permalinks:
-    tag: tags/:name/
-    category: categories/:name/
-    project_tag: /projects/project_tags/:name/
-    project_category: /projects/project_categories/:name/
+    tag: blog/tags/:name/
+    category: blog/categories/:name/
+    project_tag: projects/project_tags/:name/
+    project_category: projects/project_categories/:name/

@@ -1,5 +1,5 @@
 ---
-layout: project_category
+layout: project-category
 title: AD
-permalink: /projects/project_categories/AD
+permalink: /projects/project_categories/ad/
 ---

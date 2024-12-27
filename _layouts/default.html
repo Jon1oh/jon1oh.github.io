@@ -11,27 +11,7 @@
         <div class="col-12 col-md-8 container d-flex flex-column px-xxl-5">
             <header id="topbar-wrapper" aria-label="Top Bar">
                 <div id="topbar" class="d-flex align-items-center justify-content-between px-lg-3 h-100">
-                    <nav id="breadcrumb" aria-label="Breadcrumb">
-                        <!-- index page -->
-                        <span>
-                            {% if page.url == "/" %}
-                                Home
-                            {% else %}
-                                <span><a href="/">Home</a></span> 
-
-                            {% if page.url contains "/posts/" %}
-                                <span><a href="/blog/">Blog</a></span>
-                            {% endif %}
-
-                            {% assign project_path = page.url | split: "/projects/" %}
-                            {% if project_path.size > 1 and project_path[1] != "" %}
-                                <span><a href="/projects/">Projects</a></span>
-                            {% endif %}                                                      
-
-                                <span>{{ page.title }}</span>
-                            {% endif %}
-                        </span>
-                    </nav>
+                    {% include breadcrumb.html %}
                     <!-- endof #breadcrumb -->
 
                     <button type="button" id="sidebar-trigger" class="btn btn-link">
@@ -62,7 +42,7 @@
                     {{ content }}
                 </main>
 
-                {% if page.url contains "/blog/" or page.url contains "/posts/" or page.url contains "/tags/" or page.url contains "/categories/" %}
+                {% if page.url contains "/blog/" or page.url contains "/posts/" %}
                 <!-- panel -->
                 <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
                     <div class="access">
@@ -112,13 +92,7 @@
                 <div class="col-11 content">
                     <div id="search-hints">
                         <!-- The trending tags list -->
-                        <section>
-                            <h2 class="panel-heading">Trending Tags</h2>
-                            <div class="d-flex flex-wrap mt-3 mb-1 me-3">
-                                <a class="post-tag btn btn-outline-primary" href="/tags/ad/">AD</a>
-                                <a class="post-tag btn btn-outline-primary" href="/tags/kerberos/">Kerberos</a>
-                            </div>
-                        </section>
+                        {% include trending-tags.html %}
                     </div>
                     <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
                 </div>

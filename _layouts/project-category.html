@@ -9,12 +9,12 @@ layout: page
   <h1 class="ps-lg-2">
     <i class="far fa-folder-open fa-fw text-muted"></i>
     {{ page.title }}
-    <span class="lead text-muted ps-2">{{ site.projects | where: "categories", page.category | size }}</span>
+    <span class="lead text-muted ps-2">{{ page.projects | size }}</span>
   </h1>
 
   <ul class="content ps-0">
-    {% assign projects_in_category = site.projects | where: "categories", page.category %}
-    {% for project in projects_in_category %}
+    {% assign projects_of_category = site.projects | where_exp: "project", "project.project_categories contains page.title" %}
+    {% for project in projects_of_category %}
     <li class="d-flex justify-content-between px-md-3">
       <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
       <span class="dash flex-grow-1"></span>

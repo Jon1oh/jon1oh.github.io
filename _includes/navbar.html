@@ -2,9 +2,26 @@
 
 <nav class="flex-column flex-grow-1 w-100 ps-0">
     <ul class="nav">
+        {% assign breadcrumb_parts = page.url | split: '/' | reject: '' %}
+        {% assign second_breadcrumb = breadcrumb_parts[1] %}
+        
         {% for item in site.navigation %}
+        {% assign item_name = item.url | split: '/' | last %}
         <li class="nav-item">
-            <a href="{{ item.url }}" class="nav-link {% if page.url == item.url %}active shadow {% else %}text-muted{% endif %}">
+            <a href="{{ item.url }}" class="nav-link 
+                {% if page.url == "/" and item.url == "/" %}
+                    active shadow
+                {% elsif page.url contains item_name %}
+                    {% if breadcrumb_parts.size > 2 and second_breadcrumb == item_name %}
+                        active shadow
+                    {% elsif breadcrumb_parts.size <= 2 %}
+                        active shadow
+                    {% else %}
+                        text-muted
+                    {% endif %}
+                {% else %}
+                    text-muted
+                {% endif %}">
                 <i class="fa-fw fas fa-{{ item.icon }}"></i>
                 <span>{{ item.title | upcase }}</span>
             </a>

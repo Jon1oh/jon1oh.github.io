@@ -81,10 +81,10 @@
                 {% endif %}
 
                 <!-- categories -->
-                {% if project.categories.size > 0 %}
+                {% if project.project_categories.size > 0 %}
                   <i class="far fa-folder-open fa-fw me-1"></i>
                   <span class="categories">
-                    {% for category in project.categories %}
+                    {% for category in project.project_categories %}
                       {{ category }}
                       {%- unless forloop.last -%},{%- endunless -%}
                     {% endfor %}

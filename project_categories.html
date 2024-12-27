@@ -1,19 +1,112 @@
 ---
 layout: page
 title: Project Categories
-permalink: /projects/project_categories
+permalink: /projects/project_categories/
+# All the Categories of posts
 ---
 
 {% include lang.html %}
 
-{% assign sort_categories = site.projects | group_by: 'category' | sort: 'name' %}
+{% assign HEAD_PREFIX = 'h_' %}
+{% assign LIST_PREFIX = 'l_' %}
 
-<ul>
-    {% for category in sort_categories %}
-    <li>
-        {% assign category_name = category.name %}
-        {% capture _category_url %}/projects/{{ category_name | slugify | url_encode }}/{% endcapture %}
-        <a href="{{ _category_url | relative_url }}">{{ category_name }}</a>
-    </li>
+{% assign group_index = 0 %}
+
+{% assign all_categories = site.projects | map: 'project_categories' | join: ',' | split: ',' | uniq | sort %}
+
+{% for category_name in all_categories %}
+  {% assign projects_of_category = site.projects | where_exp: "project", "project.project_categories contains category_name" %}
+  {% assign subcategories = '' | split: '' %}
+
+  {% for project in projects_of_category %}
+    {% for sub_category in project.project_categories %}
+      {% if sub_category != category_name %}
+        {% unless subcategories contains sub_category %}
+          {% assign subcategories = subcategories | push: sub_category %}
+        {% endunless %}
+      {% endif %}
     {% endfor %}
-</ul>
+  {% endfor %}
+
+  {% assign subcategories_size = subcategories | size %}
+
+  <div class="card categories mt-3">
+    <!-- top-category -->
+    <div id="{{ HEAD_PREFIX }}{{ group_index }}" class="card-header d-flex justify-content-between hide-border-bottom">
+      <span class="ms-2">
+        <i class="far fa-folder{% if subcategories_size > 0 %}-open{% endif %} fa-fw"></i>
+
+        {% capture _category_url %}/projects/project_categories/{{ category_name | slugify | url_encode }}/{% endcapture %}
+        <a href="{{ _category_url | relative_url }}" class="mx-2">{{ category_name }}</a>
+
+        <!-- content count -->
+        {% assign top_projects_size = projects_of_category | size %}
+        <span class="text-muted small font-weight-light">
+          {{ top_projects_size }}
+
+          {% if top_projects_size > 1 %}
+            {{
+            site.data.locales[lang].categories.project_measure.plural
+            | default: site.data.locales[lang].categories.project_measure
+            }}
+          {% else %}
+            {{
+            site.data.locales[lang].categories.project_measure.singular
+            | default: site.data.locales[lang].categories.project_measure
+            }}
+          {% endif %}
+        </span>
+      </span>
+
+      <!-- arrow -->
+      {% if subcategories_size > 0 %}
+        <a href="#{{ LIST_PREFIX }}{{ group_index }}" data-bs-toggle="collapse" aria-expanded="true"
+           aria-label="{{ HEAD_PREFIX }}{{ group_index }}-trigger"
+           class="category-trigger hide-border-bottom d-flex align-items-center">
+          <i class="fas fa-fw fa-angle-down"></i>
+        </a>
+      {% else %}
+        <span data-bs-toggle="collapse" class="category-trigger hide-border-bottom disabled d-flex align-items-center">
+          <i class="fas fa-fw fa-angle-right"></i>
+        </span>
+      {% endif %}
+    </div>
+    <!-- .card-header -->
+
+    <!-- Sub-categories -->
+    {% if subcategories_size > 0 %}
+      <div id="{{ LIST_PREFIX }}{{ group_index }}" class="collapse show" aria-expanded="true">
+        <ul class="list-group">
+          {% for sub_category in subcategories %}
+            <li class="list-group-item">
+              <i class="far fa-folder fa-fw"></i>
+
+              {% capture _sub_ctg_url %}/projects/project_categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
+              <a href="{{ _sub_ctg_url | relative_url }}" class="mx-2">{{ sub_category }}</a>
+
+              {% assign projects_size = site.projects | where_exp: "project", "project.project_categories contains sub_category" | size %}
+              <span class="text-muted small font-weight-light">
+                {{ projects_size }}
+
+                {% if projects_size > 1 %}
+                  {{
+                  site.data.locales[lang].categories.project_measure.plural
+                  | default: site.data.locales[lang].categories.project_measure
+                  }}
+                {% else %}
+                  {{
+                  site.data.locales[lang].categories.project_measure.singular
+                  | default: site.data.locales[lang].categories.project_measure
+                  }}
+                {% endif %}
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+  <!-- .card -->
+
+  {% assign group_index = group_index | plus: 1 %}
+{% endfor %}
