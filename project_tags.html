@@ -11,53 +11,53 @@ permalink: /projects/project_tags/
 
 {% assign group_index = 0 %}
 
-{% assign sort_tags = site.projects | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+{% assign sort_tags = site.projects | map: 'project_tags' | join: ',' | split: ',' | uniq | sort %}
 
 {% for tag in sort_tags %}
-{% assign tag_name = tag %}
-{% assign projects_of_tag = site.projects | where: "tags", tag_name %}
-{% assign first_project = projects_of_tag | first %}
+  {% assign tag_name = tag %}
+  {% assign projects_of_tag = site.projects | where: "project_tags", tag_name %}
+  {% assign first_project = projects_of_tag | first %}
 
-{% if tag_name == first_project.tags[0] %}
-{% assign sub_tags = '' | split: '' %}
+  {% if tag_name == first_project.project_tags[0] %}
+    {% assign sub_tags = '' | split: '' %}
 
-{% for project in projects_of_tag %}
-{% assign second_tag = project.tags[1] %}
-{% if second_tag %}
-{% unless sub_tags contains second_tag %}
-{% assign sub_tags = sub_tags | push: second_tag %}
-{% endunless %}
-{% endif %}
-{% endfor %}
+    {% for project in projects_of_tag %}
+      {% for sub_tag in project.project_tags %}
+        {% if sub_tag != tag_name %}
+          {% unless sub_tags contains sub_tag %}
+            {% assign sub_tags = sub_tags | push: sub_tag %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
 
-{% assign sub_tags = sub_tags | sort %}
-{% assign sub_tags_size = sub_tags | size %}
-<!-- ...existing code... -->
-{% endif %}
+    {% assign sub_tags = sub_tags | sort %}
+    {% assign sub_tags_size = sub_tags | size %}
+  {% endif %}
 {% endfor %}
 
 <div id="tags" class="d-flex flex-wrap mx-xl-2">
-    {% assign tags = '' | split: '' %}
-    {% for project in site.projects %}
-    {% for tag in project.tags %}
-    {% unless tags contains tag %}
-    {% assign tags = tags | push: tag %}
-    {% endunless %}
+  {% assign tags = '' | split: '' %}
+  {% for project in site.projects %}
+    {% for tag in project.project_tags %}
+      {% unless tags contains tag %}
+        {% assign tags = tags | push: tag %}
+      {% endunless %}
     {% endfor %}
-    {% endfor %}
+  {% endfor %}
 
-    {% assign sorted_tags = tags | sort_natural %}
+  {% assign sorted_tags = tags | sort_natural %}
 
-    {% if sorted_tags.size == 0 %}
+  {% if sorted_tags.size == 0 %}
     <p>Sorry, no project tags available.</p>
-    {% else %}
+  {% else %}
     {% for t in sorted_tags %}
-    <div>
-        <a class="tag" href="{{ t | slugify | url_encode | prepend: '/projects/tags/' | append: '/' | relative_url }}">
-            {{ t -}}
-            <span class="text-muted">{{ site.projects | where: "tags", t | size }}</span>
+      <div>
+        <a class="tag" href="{{ t | slugify | url_encode | prepend: '/projects/project_tags/' | append: '/' | relative_url }}">
+          {{ t }}
+          <span class="text-muted">{{ site.projects | where: "project_tags", t | size }}</span>
         </a>
-    </div>
+      </div>
     {% endfor %}
-    {% endif %}
+  {% endif %}
 </div>

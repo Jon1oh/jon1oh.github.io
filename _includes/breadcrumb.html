@@ -19,10 +19,24 @@
         {% assign category_path = page.url | split: "/blog/categories/" %}
         {% if category_path.size > 1 and category_path[1] != "" %}
         <span><a href="/blog/categories/">Post Categories</a></span>
-        <span>{{ page.title }}</span>
-        {% else %}
-        <span>{{ page.title }}</span>
         {% endif %}
+
+        {% assign tag_path = page.url | split: "/blog/tags/" %}
+        {% if tag_path.size > 1 and tag_path[1] != "" %}
+        <span><a href="/blog/tags/">Post Tags</a></span>
+        {% endif %}
+
+        {% assign project_category_path = page.url | split: "/projects/project_categories/" %}
+        {% if project_category_path.size > 1 and project_category_path[1] != "" %}
+        <span><a href="/projects/project_categories/">Project Categories</a></span>
+        {% endif %}
+
+        {% assign project_tag_path = page.url | split: "/projects/project_tags/" %}
+        {% if project_tag_path.size > 1 and project_tag_path[1] != "" %}
+        <span><a href="/projects/project_tags/">Project Tags</a></span>
+        {% endif %}
+
+        <span>{{ page.title }}</span>
         {% endif %}
     </span>
 </nav>

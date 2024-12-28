@@ -203,3 +203,8 @@ html[data-mode='dark'] .project-preview {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Ensure the font weight is normal for a.text-muted in the side panel */
+a.text-muted {
+  font-weight: normal; /* Ensure the font weight is normal */
+}

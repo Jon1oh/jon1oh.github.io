@@ -5,7 +5,8 @@ description: "A secure mobile dating application built with Flask, Flutter and M
 date: 2024-11-02
 start_date: 2023-09-01
 end_date: 2024-02-01
-project_categories: [InfoSec, Mobile-Dev]
+project_categories: [InfoSec]
+project_tags: [Mobile-Dev]
 ---
 
 ## Background

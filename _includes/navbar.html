@@ -11,14 +11,10 @@
             <a href="{{ item.url }}" class="nav-link 
                 {% if page.url == "/" and item.url == "/" %}
                     active shadow
-                {% elsif page.url contains item_name %}
-                    {% if breadcrumb_parts.size > 2 and second_breadcrumb == item_name %}
-                        active shadow
-                    {% elsif breadcrumb_parts.size <= 2 %}
-                        active shadow
-                    {% else %}
-                        text-muted
-                    {% endif %}
+                {% elsif breadcrumb_parts.size == 2 and second_breadcrumb == item_name %}
+                    active shadow
+                {% elsif breadcrumb_parts.size > 2 and second_breadcrumb == item_name %}
+                    active shadow
                 {% else %}
                     text-muted
                 {% endif %}">
