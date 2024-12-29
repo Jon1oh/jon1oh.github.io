@@ -19,13 +19,14 @@ permalink: /projects/project_categories/
   {% assign subcategories = '' | split: '' %}
 
   {% for project in projects_of_category %}
-    {% for sub_category in project.project_categories %}
-      {% if sub_category != category_name %}
+    {% if project.subcategories %}
+      {% assign project_subcategories = project.subcategories | sort %}
+      {% for sub_category in project_subcategories %}
         {% unless subcategories contains sub_category %}
           {% assign subcategories = subcategories | push: sub_category %}
         {% endunless %}
-      {% endif %}
-    {% endfor %}
+      {% endfor %}
+    {% endif %}
   {% endfor %}
 
   {% assign subcategories_size = subcategories | size %}

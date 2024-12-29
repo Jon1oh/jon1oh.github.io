@@ -79,11 +79,12 @@ layout: page
         <!-- arrow -->
         {% if sub_categories_size > 0 %}
         <a href="#{{ LIST_PREFIX }}{{ group_index }}" data-bs-toggle="collapse" aria-expanded="true"
-            aria-label="{{ HEAD_PREFIX }}{{ group_index }}-trigger" class="category-trigger hide-border-bottom d-flex align-items-center">
+            aria-controls="{{ LIST_PREFIX }}{{ group_index }}"
+            class="category-trigger hide-border-bottom d-flex align-items-center">
             <i class="fas fa-fw fa-angle-down"></i>
         </a>
         {% else %}
-        <span data-bs-toggle="collapse" class="category-trigger hide-border-bottom disabled d-flex align-items-center">
+        <span class="category-trigger hide-border-bottom disabled d-flex align-items-center">
             <i class="fas fa-fw fa-angle-right"></i>
         </span>
         {% endif %}

@@ -1,25 +1,25 @@
 ---
 layout: page
-# The Project Category layout
 ---
 
 {% include lang.html %}
 
 <div id="page-category">
-  <h1 class="ps-lg-2">
-    <i class="far fa-folder-open fa-fw text-muted"></i>
-    {{ page.title }}
-    <span class="lead text-muted ps-2">{{ page.projects | size }}</span>
-  </h1>
+    <h1 class="ps-lg-2 fw-bold fs-1">
+        <i class="far fa-folder-open fa-fw text-muted fs-2"></i>
+        {{ page.title }}
+        <span class="lead text-muted ps-2 fs-3">{{ site.projects | where: "project_categories", page.title | size
+            }}</span>
+    </h1>
 
-  <ul class="content ps-0">
-    {% assign projects_of_category = site.projects | where_exp: "project", "project.project_categories contains page.title" %}
-    {% for project in projects_of_category %}
-    <li class="d-flex justify-content-between px-md-3">
-      <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
-      <span class="dash flex-grow-1"></span>
-      {% include datetime.html date=project.date class='text-muted small text-nowrap' lang=lang %}
-    </li>
-    {% endfor %}
-  </ul>
+    <ul class="content ps-0">
+        {% assign projects = site.projects | where: "project_categories", page.title %}
+        {% for project in projects %}
+        <li class="d-flex justify-content-between px-md-3">
+            <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+            <span class="dash flex-grow-1"></span>
+            {% include datetime.html date=project.date class='text-muted small text-nowrap' lang=lang %}
+        </li>
+        {% endfor %}
+    </ul>
 </div>

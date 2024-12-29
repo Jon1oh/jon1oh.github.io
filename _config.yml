@@ -192,6 +192,10 @@ collections:
   projects:
     output: true
     type: project
+  project_categories:
+    output: true
+  project_tags:
+    output: true
 
 defaults:
   - scope:
@@ -245,14 +249,20 @@ exclude:
   - package*.json
 
 jekyll-archives:
-  enabled: [categories, tags, project_categories, project_tags]
+  enabled: [categories, tags, project_categories, project_tags, year, month, day]
   layouts:
     category: category
     tag: tag
     project_category: project-category
     project_tag: project-tag
+    year: archives
+    month: archives
+    day: archives
   permalinks:
     tag: /blog/tags/:name/
     category: /blog/categories/:name/
     project_tag: /projects/project_tags/:name/
     project_category: /projects/project_categories/:name/
+    year: /blog/archives/:year/
+    month: /blog/archives/:year/:month/
+    day: /blog/archives/:year/:month/:day/

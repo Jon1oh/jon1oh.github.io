@@ -34,7 +34,7 @@
             </header>
 
             <div class="row flex-grow-1">
-                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url == "/blog/" or page.url contains "/posts/" or page.url contains "/projects/" or page.url contains "/tags/" or page.url contains "/categories/" %}col-lg-11 col-xl-9{% else %}col-lg-12{% endif %} px-md-4">
+                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url contains "/blog/" or page.url contains "/posts/" or page.url contains "/projects/" or page.url contains "/tags/" or page.url contains "/categories/" %}col-lg-11 col-xl-9{% else %}col-lg-12{% endif %} px-md-4">
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <!-- Create your custom home page content here -->
@@ -48,7 +48,8 @@
                     <div class="access">
                         {% include_cached update-list.html lang=lang %}
                         {% include_cached trending-categories.html lang=lang %}                        
-                        {% include_cached trending-tags.html lang=lang %}            
+                        {% include_cached trending-tags.html lang=lang %}   
+                        {% include_cached trending-archives.html lang=lang %}
                     </div> <!-- .access -->
                 </aside> <!-- #panel-wrapper -->  
                 {% elsif page.url contains "/projects/" %}
@@ -65,25 +66,7 @@
             <div class="row">
                 <!-- tail -->
                 <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
-                    <!-- The Footer -->
-                    <footer aria-label="Site Info"
-                        class="d-flex flex-column justify-content-center text-muted flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3">
-                        <p>
-                            ©<time>2024</time>
-
-                            <a href="https://github.com/Jon1oh">Jon Loh</a>.
-
-                            <span data-bs-toggle="tooltip" data-bs-placement="top"
-                                data-bs-original-title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some
-                                rights reserved.</span>
-                        </p>
-
-                        <p>Using the <a data-bs-toggle="tooltip" data-bs-placement="top"
-                                href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener"
-                                data-bs-original-title="v7.1.1">Chirpy</a> theme for <a href="https://jekyllrb.com"
-                                target="_blank" rel="noopener">Jekyll</a>.
-                        </p>
-                    </footer>
+                    {% include footer.html lang=lang %}
                 </div>
             </div>
 
