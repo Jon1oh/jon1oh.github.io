@@ -5,26 +5,29 @@ layout: default
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
 <header class="welcome-text">
-    <h1 class="fw-bold mb-1 fs-1">Hey, I'm Jon.</h1>
-    <div class="description py-2">
-        <p class="description-text fs-5">Cybersecurity Diploma Graduate aspiring to step into the field of pentesting</p>
-        <div class="desc-btns">
+    <h1 class="fw-bold mb-1 fs-1">Cybersecurity Diploma Graduate aspiring to be a Pentester!</h1>
+    <div class="description py-2" id="view-profile">
+        <p class="description-text fs-5">&#x1F44B; Hey, I'm Jon! As someone who believes in learning through practicing, I'm always eager to gain new experiences and acquire new knowledge in Pentesting.</p>
+        <div class="view-btn">
+            <a href="/about/" class="view-profile-link btn btn-light text-decoration-none text-reset">
+                View profile <i class="fas fa-arrow-right arrow d-inline-block"></i>
+            </a>
+        </div> <!-- .view-btn -->
+        <!-- <div class="desc-btns">
             <a type="button" class="border btn btn-light me-4" href="/contact/">Contact</a>
             <button type="button" class="border btn btn-light" id="copy-email-btn" onclick="copyEmail()"><i
                     class="far fa-copy me-2"></i>Email</button>
-        </div> <!-- .desc-btns -->
+        </div> .desc-btns -->
     </div> <!--.description-text -->
 </header><!-- .welcome-text -->
 
 <main>
     <div class="container-fluid" id="projects-overview">
-        <h2 class="fw-bold mb-1">Recent Projects</h2>
-        <p>Here's some projects I've worked on</p>
-
-        <div id="project-list" class="d-flex flex-column flex-xl-row gap-1 gap-xl-4 px-xl-1">
+        <h2 class="fw-bold">Recent Projects</h2>
+        <div id="project-list" class="flex-grow-1 px-xl-1">
             {% assign sorted_projects = site.projects | sort: "date" | reverse %}
             {% for project in sorted_projects limit:3 %}
-            <article class="card-wrapper card flex-fill h-100 col-12 col-4 overflow-hidden">
+            <article class="card-wrapper card">
                 <a href="{{ project.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
                     {% assign card_body_col = '12' %}
                     {% if project.image %}
@@ -57,15 +60,17 @@ layout: default
                                 <div class="me-auto">
                                     <!-- posted date -->
                                     <i class="far fa-calendar fa-fw me-1"></i>
-                                    <time datetime="{{ project.date | date_to_xmlschema }}">
-                                        {{ project.date | date: "%b %-d, %Y" }}
-                                    </time>
+                                    {% if project.start_date and project.end_date %}
+                                    <span>
+                                        {{ project.start_date | date: "%b %Y" }} to {{ project.end_date | date: "%b %Y" }}
+                                    </span>
+                                    {% endif %}
 
                                     <!-- categories -->
-                                    {% if project.categories.size > 0 %}
+                                    {% if project.project_categories.size > 0 %}
                                     <i class="far fa-folder-open fa-fw me-1 ms-3"></i>
                                     <span class="categories">
-                                        {% for category in project.categories %}
+                                        {% for category in project.project_categories %}
                                         {{ category }}
                                         {%- unless forloop.last -%},{%- endunless -%}
                                         {% endfor %}
@@ -92,7 +97,6 @@ layout: default
 
     <div class="container-fluid" id="posts-overview">
         <h2 class="fw-bold">Recent Posts</h2>
-
         <div id="post-list" class="flex-grow-1 px-xl-1">
             {% assign posts = site.posts | sort: "date" | reverse | limit: 4 %}
             {% for post in posts %}
@@ -123,7 +127,7 @@ layout: default
                             <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
                             <div class="card-text content mt-0 mb-3 overflow-hidden">
                                 <p>{% include post-description.html %}</p>
-                              </div>
+                            </div>
 
                             <div class="post-meta flex-grow-1 d-flex align-items-end text-muted">
                                 <div class="me-auto">

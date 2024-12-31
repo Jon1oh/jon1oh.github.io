@@ -45,12 +45,14 @@
 }
 
 #projects-overview .view-btn .btn .arrow,
-#posts-overview .view-btn .btn .arrow {
+#posts-overview .view-btn .btn .arrow,
+#view-profile .view-btn .btn .arrow {
   transition: transform .2s ease-in-out;
 }
 
 #projects-overview .view-btn .btn:hover .arrow,
-#posts-overview .view-btn .btn:hover .arrow {
+#posts-overview .view-btn .btn:hover .arrow,
+#view-profile .view-btn .btn:hover .arrow {
   transform: translateX(5px) !important;
 }
 
@@ -204,7 +206,9 @@ html[data-mode='dark'] .project-preview {
   text-overflow: ellipsis;
 }
 
-/* Ensure the font weight is normal for a.text-muted in the side panel */
-a.text-muted {
-  font-weight: normal; /* Ensure the font weight is normal */
+/* Styles for carousel images */
+.carousel-image {
+  border-radius: 0.625rem;
+  height: 40vh;
+  object-position: center 20%;
 }

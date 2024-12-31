@@ -3,7 +3,7 @@
 {%- endcomment -%}
 
 {%- if page.url == "/" -%}
-  {%- assign max_length = include.max_length | default: 60 -%}
+  {%- assign max_length = include.max_length | default: 100 -%}
 {%- else -%}
   {%- assign max_length = include.max_length | default: 100 -%}
 {%- endif -%}
