@@ -7,4 +7,17 @@ start_date: 2023-10-01
 end_date: 2024-03-01
 project_categories: [Pentesting]
 project_tags: [AD]
+roles: ["Domain Administrator", "Pentester"]
 ---
+
+## Background
+
+## Objectives
+
+## Research
+
+## Challenges and Solutions
+
+## Deliverables/Outcome
+
+## Conclusion

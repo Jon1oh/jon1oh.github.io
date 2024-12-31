@@ -7,6 +7,7 @@ start_date: 2023-09-01
 end_date: 2024-02-01
 project_categories: [InfoSec]
 project_tags: [Mobile-Dev]
+roles: ["Local Storage Backup (Client-Side)", "Secure Local Storage (Client-Side)"]
 ---
 
 ## Background

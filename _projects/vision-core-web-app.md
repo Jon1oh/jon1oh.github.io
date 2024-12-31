@@ -7,6 +7,7 @@ start_date: 2021-09-01
 end_date: 2022-02-01
 project_categories: [Programming]
 project_tags: [Fullstack-Dev]
+roles: ["Frontend Developer"]
 ---
 
 ## Background

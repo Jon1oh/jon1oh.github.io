@@ -36,6 +36,20 @@ layout: page
             </span>
             {% endif %}
 
+            <!-- roles and read time -->
+            <div class="d-flex justify-content-between mt-2">
+                {% if page.roles %}
+                <div>
+                    <strong>Role(s):</strong> {{ page.roles | join: ', ' }}
+                </div>
+                {% endif %}
+
+                <!-- read time -->
+                <div>
+                    {% include read-time.html content=content prompt=true lang=lang %}
+                </div>
+            </div>
+
             {% if page.image %}
             {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
             {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
@@ -52,53 +66,10 @@ layout: page
                 {%- endif -%}
             </div>
             {% endif %}
-
-            <div class="d-flex justify-content-between">
-                <!-- author(s) -->
-                <span>
-                    {% if page.author %}
-                    {% assign authors = page.author %}
-                    {% elsif page.authors %}
-                    {% assign authors = page.authors %}
-                    {% endif %}
-
-                    {{ site.data.locales[lang].project.written_by }}
-
-                    <em>
-                        {% if authors %}
-                        {% for author in authors %}
-                        {% if site.data.authors[author].url -%}
-                        <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
-                        {%- else -%}
-                        {{ site.data.authors[author].name }}
-                        {%- endif %}
-                        {% unless forloop.last %}{{ '</em>, <em>' }}{% endunless %}
-                        {% endfor %}
-                        {% else %}
-                        <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
-                        {% endif %}
-                    </em>
-                </span>
-
-                <div>
-                    <!-- pageviews -->
-                    {% if site.pageviews.provider and site.analytics[site.pageviews.provider].id %}
-                    <span>
-                        <em id="pageviews">
-                            <i class="fas fa-spinner fa-spin small"></i>
-                        </em>
-                        {{ site.data.locales[lang].project.pageview_measure }}
-                    </span>
-                    {% endif %}
-
-                    <!-- read time -->
-                    {% include read-time.html content=content prompt=true lang=lang %}
-                </div>
-            </div>
         </div>
     </header>
 
-    {% if page.enable_toc %}
+    {% if enable_toc %}
     <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
         <span class="label text-truncate">{{ page.title }}</span>
         <button type="button" class="toc-trigger btn me-1">

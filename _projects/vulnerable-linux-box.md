@@ -7,6 +7,7 @@ start_date: 2023-06-01
 end_date: 2023-09-01
 project_categories: [Pentesting]
 project_tags: [Linux]
+roles: ["System Administrator", "Pentester"]
 ---
 
 ## Background
