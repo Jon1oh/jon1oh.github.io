@@ -60,10 +60,6 @@
   flex-basis: 1 1 calc(33.333% - 1rem);
 }
 
-html[data-mode='dark'] header .description .desc-btns > * {
-  border: none !important;
-}
-
 html[data-mode='dark'] #projects-overview #project-list > * {
   border: none !important;
 }
@@ -89,8 +85,11 @@ html[data-mode='dark'] nav .nav-item .nav-link.active {
 }
 
 /* Home page styles for dark mode */
-html[data-mode='dark'] header .description .view-btn > * {
-  color: var(--hover-color) !important;
+html[data-mode='dark'] header .description .view-btn > *,
+html[data-mode='dark'] #projects-overview .view-btn > *,
+html[data-mode='dark'] #posts-overview .view-btn > *{
+  color: var(--grey-text) !important;
+  background: none !important;
   border: none;
 }
 
