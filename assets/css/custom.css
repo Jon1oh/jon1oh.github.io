@@ -89,14 +89,9 @@ html[data-mode='dark'] nav .nav-item .nav-link.active {
 }
 
 /* Home page styles for dark mode */
-html[data-mode='dark'] header .description .desc-btns > * {
-  background-color: var(--grey-btn) !important;
-  color: var(--grey-text);
+html[data-mode='dark'] header .description .view-btn > * {
+  color: var(--hover-color) !important;
   border: none;
-}
-
-html[data-mode='dark'] header .description .desc-btns > *:hover {
-  background-color: var(--hover-color) !important;
 }
 
 /* Contact Page styles */
@@ -210,5 +205,5 @@ html[data-mode='dark'] .project-preview {
 .carousel-image {
   border-radius: 0.625rem;
   height: 40vh;
-  object-position: center 20%;
+  object-position: center 30%;
 }
