@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     {% include head.html %}
 </head>
@@ -34,7 +35,9 @@
             </header>
 
             <div class="row flex-grow-1">
-                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url contains "/blog/" or page.url contains "/posts/" or page.url contains "/projects/" or page.url contains "/tags/" or page.url contains "/categories/" %}col-lg-11 col-xl-9{% else %}col-lg-12{% endif %} px-md-4">
+                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url contains " /blog/" or
+                    page.url contains "/posts/" or page.url contains "/projects/" or page.url contains "/tags/" or
+                    page.url contains "/categories/" %}col-lg-11 col-xl-9{% else %}col-lg-12{% endif %} px-md-4">
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <!-- Create your custom home page content here -->
@@ -47,19 +50,19 @@
                 <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
                     <div class="access">
                         {% include_cached update-list.html lang=lang %}
-                        {% include_cached trending-categories.html lang=lang %}                        
-                        {% include_cached trending-tags.html lang=lang %}   
+                        {% include_cached trending-categories.html lang=lang %}
+                        {% include_cached trending-tags.html lang=lang %}
                         {% include_cached trending-archives.html lang=lang %}
                     </div> <!-- .access -->
-                </aside> <!-- #panel-wrapper -->  
+                </aside> <!-- #panel-wrapper -->
                 {% elsif page.url contains "/projects/" %}
                 <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
                     <div class="access">
                         {% include_cached update-list-projects.html lang=lang %}
-                        {% include_cached trending-project-categories.html lang=lang %}                        
-                        {% include_cached trending-project-tags.html lang=lang %}            
+                        {% include_cached trending-project-categories.html lang=lang %}
+                        {% include_cached trending-project-tags.html lang=lang %}
                     </div> <!-- .access -->
-                </aside> <!-- #panel-wrapper -->  
+                </aside> <!-- #panel-wrapper -->
                 {% endif %}
             </div> <!-- .row -->
 
@@ -114,26 +117,25 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <!-- JS for Light/Dark Mode -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var dropdowns = document.querySelectorAll('.dropdown-toggle');
-            dropdowns.forEach(function (dropdown) {
-                dropdown.addEventListener('click', function (event) {
-                    event.stopPropagation();
-                    var dropdownMenu = this.nextElementSibling;
-                    dropdownMenu.classList.toggle('show');
-                });
-            });
+            const modeToggle = document.getElementById('mode-toggle');
+            const currentMode = localStorage.getItem('mode') || 'light';
 
-            document.addEventListener('click', function (event) {
-                var openDropdowns = document.querySelectorAll('.dropdown-menu.show');
-                openDropdowns.forEach(function (dropdownMenu) {
-                    dropdownMenu.classList.remove('show');
-                });
+            if (currentMode === 'dark') {
+                document.documentElement.setAttribute('data-mode', 'dark');
+            }
+
+            modeToggle.addEventListener('click', function () {
+                const mode = document.documentElement.getAttribute('data-mode') === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-mode', mode);
+                localStorage.setItem('mode', mode);
             });
-        });
+        });  
     </script>
 
+    <!-- JS for Search Function -->
     <script>
         SimpleJekyllSearch({
             searchInput: document.getElementById('search-input'),
