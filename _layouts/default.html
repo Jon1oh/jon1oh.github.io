@@ -35,7 +35,7 @@
             </header>
 
             <div class="row flex-grow-1">
-                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url contains "/blog/" or
+                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url contains " /blog/" or
                     page.url contains "/posts/" or page.url contains "/projects/" or page.url contains "/tags/" or
                     page.url contains "/categories/" %}col-lg-11 col-xl-9{% else %}col-lg-12{% endif %} px-md-4">
                     <meta charset="UTF-8">
@@ -110,12 +110,30 @@
     <script
         src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script>
     <script src="/assets/js/dist/commons.min.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/navbar.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JS for hamburger menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sidebarTrigger = document.getElementById('sidebar-trigger');
+            var sidebar = document.getElementById('sidebar');
+            var mask = document.getElementById('mask');
+
+            sidebarTrigger.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                mask.classList.toggle('active');
+            });
+
+            mask.addEventListener('click', function () {
+                sidebar.classList.remove('active');
+                mask.classList.remove('active');
+            });
+        });
+    </script>
 
     <!-- JS for Light/Dark Mode -->
     <script>
