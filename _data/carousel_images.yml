@@ -1,0 +1,6 @@
+- src: ../assets/img/jon.jpeg
+  alt: "First Slide"
+  caption:
+- src: ../assets/img/about/butterfly.jpg
+  alt: "Second Slide"
+  caption: "Competing in the Pesta Sukan 2024 Swimming Competition"

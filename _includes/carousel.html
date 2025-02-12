@@ -1,0 +1,52 @@
+<link rel="alternate" href="{{ site.baseurl }}/assets/css/custom.css" type="application/atom+xml" title="Atom">
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        {% for image in include.images %}
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.index0 }}"
+            class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}"
+            aria-label="Slide {{ forloop.index }}"></button>
+        {% endfor %}
+    </div>
+    <div class="carousel-inner">
+        {% for image in include.images %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img src="{{ image.src }}" class="d-block w-100 object-fit-cover carousel-image" alt="{{ image.alt }}">
+            {% if image.caption %}
+            <div class="carousel-caption d-none d-md-block">
+                <p>{{ image.caption }}</p>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var myCarousel = document.querySelector('#carouselExampleIndicators');
+        var carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 3000,
+            wrap: true
+        });
+
+        // Ensure buttons trigger the carousel slide
+        document.querySelector('.carousel-control-prev').addEventListener('click', function () {
+            carousel.prev();
+        });
+
+        document.querySelector('.carousel-control-next').addEventListener('click', function () {
+            carousel.next();
+        });
+    });
+</script>

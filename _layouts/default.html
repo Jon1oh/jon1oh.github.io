@@ -35,7 +35,7 @@
             </header>
 
             <div class="row flex-grow-1">
-                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url contains " /blog/" or
+                <main aria-label="Main Content" id="main-content" class="col-12 {% if page.url contains "/blog/" or
                     page.url contains "/posts/" or page.url contains "/projects/" or page.url contains "/tags/" or
                     page.url contains "/categories/" %}col-lg-11 col-xl-9{% else %}col-lg-12{% endif %} px-md-4">
                     <meta charset="UTF-8">
@@ -140,19 +140,19 @@
         document.addEventListener('DOMContentLoaded', function () {
             const modeToggle = document.getElementById('mode-toggle');
             const currentMode = localStorage.getItem('mode') || 'light';
-
-            if (currentMode === 'dark') {
-                document.documentElement.setAttribute('data-mode', 'dark');
+    
+            if (!document.documentElement.hasAttribute('data-mode')) {
+                document.documentElement.setAttribute('data-mode', currentMode);
             }
-
+    
             modeToggle.addEventListener('click', function () {
                 const mode = document.documentElement.getAttribute('data-mode') === 'dark' ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-mode', mode);
                 localStorage.setItem('mode', mode);
             });
-        });  
+        });
     </script>
-
+    
     <!-- JS for Search Function -->
     <script>
         SimpleJekyllSearch({
