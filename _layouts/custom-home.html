@@ -7,7 +7,7 @@ layout: default
 <header class="welcome-text">
     <h1 class="fw-bold mb-1 fs-1">A Cybersecurity Diploma Graduate aspiring to be a Pentester!</h1>
     <div class="description py-2" id="view-profile">
-        <p class="description-text fs-5">&#x1F44B; Hey, I'm Jon! A Cybersecurity graduate from Nanyang Polytechnic (NYP) hoping to pursue a degree in Information Security. I'm a highly motivated, disciplined, and independent individual who collaborates well with a team. As a strong advocate for learning through practice, I'm always eager to gain new experiences and knowledge in Pentesting.</p>
+        <p class="description-text fs-5">&#x1F44B; Hey, I'm Jon! A Cybersecurity graduate from Nanyang Polytechnic (NYP) pursuing a degree in Information Security. As a highly motivated, disciplined, and independent individual who collaborates well with a team, I'm always eager to gain new experiences and knowledge.</p>
         <div class="view-btn">
             <a href="/about/" class="view-profile-link btn btn-light text-decoration-none text-reset">
                 View profile <i class="fas fa-arrow-right arrow d-inline-block"></i>
@@ -173,26 +173,3 @@ layout: default
         </div> <!-- .view-btn -->
     </div> <!-- .container, #post-overview -->
 </main>
-
-<!-- TypedJS library CDN for typewriter effect -->
-<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-<script>
-    var typed = new Typed(".auto-type", {
-        strings: ["Aspiring Pentester &#128269;", "Cyber Enthusiast &#128187;", "Chorister &#127925;", "Fingerstyle Guitarist &#127928;", "Swimmer &#127946;"],
-        typeSpeed: 100, // In milliseconds
-        backSpeed: 50,
-        loop: true,
-    });
-
-    function copyEmail() {
-        const email = "jon.loh@hotmail.com";
-        navigator.clipboard.writeText(email).then(() => {
-            const copyButton = document.getElementById("copy-email-btn");
-            copyButton.innerHTML = 'Copied!';
-            setTimeout(() => {
-                copyButton.innerHTML = '<i class="fas fa-copy"></i> Email';
-            }, 500);
-        }).catch(err => { console.error("Failed to copy email: ", err); })
-    }
-</script>
