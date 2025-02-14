@@ -122,15 +122,18 @@
             var sidebarTrigger = document.getElementById('sidebar-trigger');
             var sidebar = document.getElementById('sidebar');
             var mask = document.getElementById('mask');
+            var body = document.body;
 
             sidebarTrigger.addEventListener('click', function () {
                 sidebar.classList.toggle('active');
                 mask.classList.toggle('active');
+                body.classList.toggle('sidebar-display');
             });
 
             mask.addEventListener('click', function () {
                 sidebar.classList.remove('active');
                 mask.classList.remove('active');
+                body.classList.remove('sidebar-display');
             });
         });
     </script>
